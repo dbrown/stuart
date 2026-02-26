@@ -44,18 +44,55 @@ ESPN_SUMMARY_ENDPOINTS = {
 # Only non-obvious mappings needed — identical codes pass through unchanged.
 KALSHI_TO_ESPN = {
     "nba": {
-        "BRK": "BKN", "GS": "GSW", "CHO": "CHA", "NO": "NOP",
-        "NY": "NYK", "PHO": "PHX", "SA": "SAS",
+        "SAS": "SA",
+        "NOP": "NO",
+        "UTA": "UTAH",
+        "WAS": "WSH"  
     },
     "ncaa": {
-        "CLT": "CHAR", "L-MD": "LMD", "OMA": "NEOM", "DETM": "DET",
-        "CLE": "CLEV", "WGA": "UWGA", "EKU": "EKY", "VAL": "VALP",
-        "APSU": "PEAY", "GCU": "GC", "TXAM": "TA&M", "NW": "NU",
-        "MORG": "MORG", "SCST": "SCST", "BC": "BC", "WAKE": "WAKE",
-        "PROV": "PROV", "AF": "AFA", "SBU": "SBON", "M-OH": "MOH",
-        "LUC": "LCHI", "IU": "IND", "PRES": "PRE", "UPST": "UNF",
-        "GWEB": "WEBB", "JAX": "JAC", "STMN": "STET", "KC": "UMKC",
-        "BOIS": "BSU", "BUF": "BUFF", "EMU": "MOH", "DAY": "LCHI",
-        "MD": "MD", "NU": "NW", "YSU": "YSU",
-    },
+        'AC': 'ACU',  # Abilene Christian
+        'ALBY': 'UALB',  # Albany
+        'CAMP': 'CAM',  # Campbell
+        'CHAT': 'UTC', # Chattanooga
+        'CHS': 'CHST', # Charleston Southern
+        'COOK': 'BCU',  # Bethune-Cookman
+        'CSN': 'CSUN', # Cal State Northridge
+        'CSB': 'CSUB', # Cal State Bakersfield
+        'HP': 'HPU',  # High Point
+        'IW': 'UIW',  # Incarnate Word
+        'JAC': 'JAX',  # Jacksonville
+        'JVST': 'JXST', # Jacksonville State
+        'LMC': 'LEM',
+        'LINW': 'LIN',
+        'MASSL': 'UML', # Massachusetts Lowell
+        'MCNS': 'MCN',
+        'MHU': 'MERC', # Mercyhurst
+        'MIZZ': 'MIZ', # Missouri
+        'MOSU': 'MOST', # missouri state
+        'MTU': 'MTSU', # Middle Tennessee
+        'MURR': 'MUR', # Murray State
+        'NCST': 'NCSU', # North Carolina State
+        'NHC': 'NHVN', # New Haven
+        'NIAG': 'NIA', # Niagara
+        'OKLA': 'OU',  # Oklahoma
+        'PRE': 'PRES', # Presbyterian
+        'SBON': 'SBU',  # St. Bonaventure
+        'SCAR': 'SC',  # South Carolina
+        'SCUS': 'UPST',  # USC Upstate
+        'SPC': 'SPU',  # Seattle Pacific
+        'STNH': 'STO',  # Stonehill,
+        'STON': 'STBK',  # Stony Brook
+        'TARL': 'TAR',  # Tarleton State
+        'TOWS': 'TOW',  # Towson
+        'TXAM': 'TA&M',  # Texas A&M
+        'UALR': 'LR',  # Arkansas Little Rock
+        'UCRV': 'UCR',  # UC Riverside
+        'UMKC': 'KC',  # UMKC/Kansas City
+        'UST': 'STMN' ,  # St. Thomas Minnesota
+        'UTRGV': 'RGV',  # Texas Rio Grande Valley
+        'VALP': 'VAL',  # Valparaiso
+        'WEBB': 'GWEB',
+        'WM': 'W&M'  # William & Mary
+    }
 }
+

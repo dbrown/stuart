@@ -13,9 +13,10 @@ from config import ESPN_HEADERS, ESPN_SCOREBOARD_ENDPOINTS, ESPN_SUMMARY_ENDPOIN
 
 # ── Scoreboard (game discovery) ───────────────────────────────────────────────
 
-def fetch_scoreboard(league: str) -> list[dict]:
+def fetch_scoreboard(league: str, date: str = None) -> list[dict]:
     """
-    Fetch today's games from the ESPN scoreboard endpoint for a given league.
+    Fetch games from the ESPN scoreboard endpoint for a given league and date.
+    If date is None, uses today's date. Date format: YYYYMMDD.
 
     Returns a list of dicts:
         game_id, home_team, away_team, status, date, time
@@ -24,9 +25,14 @@ def fetch_scoreboard(league: str) -> list[dict]:
     if not url:
         raise ValueError(f"Unknown league: {league!r}")
 
-    scoreboard = requests.get(url, headers=ESPN_HEADERS, timeout=10).json()
-    today      = datetime.today().strftime("%Y-%m-%d")
-    games      = []
+    params = {}
+    if date:
+        params["dates"] = date
+
+    scoreboard = requests.get(url, headers=ESPN_HEADERS, params=params or None, timeout=10).json()
+    # ESPN returns ISO 8601 date in event["date"], but we want to record the date we fetched for
+    fetch_date = datetime.today().strftime("%Y-%m-%d")
+    games = []
 
     for event in scoreboard.get("events", []):
         abbrev    = event.get("shortName", "?")
@@ -39,7 +45,7 @@ def fetch_scoreboard(league: str) -> list[dict]:
             "home_team": home_team,
             "away_team": away_team,
             "status":    event.get("status", {}).get("type", {}).get("name", "?"),
-            "date":      today,
+            "date":      fetch_date,
             "time":      event.get("date"),  # ISO 8601
         })
 

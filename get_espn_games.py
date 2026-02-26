@@ -1,43 +1,31 @@
-import requests
+#!/usr/bin/env python3
+# get_espn_games.py
+# Fetches today's games from ESPN and writes espn_games_{league}.json.
+# Run this once before the main trading loop.
+
 import json
-from datetime import datetime
+import sys
 
-headers = {"User-Agent": "Mozilla/5.0"}
+from espn import fetch_scoreboard
+from config import ESPN_SUMMARY_ENDPOINTS   # just to validate league names
 
-leagues = {
-    'nba': 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard',
-    'ncaabbm': 'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?groups=50&limit=357',
-    'ncaabbw': 'https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/scoreboard?groups=50&limit=357',
-}
+LEAGUES = list(ESPN_SUMMARY_ENDPOINTS.keys())  # ["nba", "ncaabbm", "ncaabbw"]
 
-for league, url in leagues.items():
-    try:
-        scoreboard = requests.get(url, headers=headers, timeout=10).json()
-    except Exception as e:
-        print(f"Error fetching {league}: {e}")
-        continue
 
-    cleaned_games = []
-    today = datetime.today().strftime("%Y-%m-%d")
-    for event in scoreboard.get("events", []):
-        game_id = event.get("id", "?")
-        name = event.get("name", "?")
-        abbreviation = event.get("shortName", "?")
-        teams = abbreviation.split(" @ ") if " @ " in abbreviation else ["?", "?"]
-        home_team = teams[1] if len(teams) == 2 else "?"
-        away_team = teams[0] if len(teams) == 2 else "?"
-        status = event.get("status", {}).get("type", {}).get("name", "?")
-        scheduled_time = event.get("date", None)  # ISO8601 string
-        cleaned_games.append({
-            "game_id": game_id,
-            "home_team": home_team,
-            "away_team": away_team,
-            "status": status,
-            "date": today,
-            "time": scheduled_time
-        })
+def main():
+    from datetime import datetime
+    # Always use today's date in YYYYMMDD for ESPN fetch
+    today_str = datetime.today().strftime("%Y%m%d")
+    for league in LEAGUES:
+        try:
+            games    = fetch_scoreboard(league, date=today_str)
+            filename = f"espn_games_{league}.json"
+            with open(filename, "w") as f:
+                json.dump(games, f, indent=4)
+            print(f"Wrote {len(games)} games to {filename}")
+        except Exception as e:
+            print(f"Error fetching {league}: {e}", file=sys.stderr)
 
-    filename = f"espn_games_{league}.json"
-    with open(filename, "w") as f:
-        json.dump(cleaned_games, f, indent=4)
-    print(f"Wrote {len(cleaned_games)} games to {filename}")
+
+if __name__ == "__main__":
+    main()
