@@ -81,7 +81,7 @@ def print_and_trade(
     ticker    = row["ticker"]
     home_code = normalize_kalshi_code(row["home_team"], league)
     away_code = normalize_kalshi_code(row["away_team"], league)
-    yes_team  = get_yes_team_from_ticker(ticker)
+    yes_team  = normalize_kalshi_code(get_yes_team_from_ticker(ticker), league)
     yes_is_home = yes_team == home_code
 
     espn   = get_live_state(game_id, league)

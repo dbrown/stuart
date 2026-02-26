@@ -6,7 +6,13 @@ from config import KALSHI_TO_ESPN
 
 def _league_map(league: str) -> dict:
     """Return the correct sub-map for a given league string."""
-    key = "nba" if league == "nba" else "ncaa"
+    # Use 'nba' for NBA, 'ncaa' for all college basketball leagues
+    if league == "nba":
+        key = "nba"
+    elif league in ("ncaabbm", "ncaabbw"):
+        key = "ncaa"
+    else:
+        key = league
     return KALSHI_TO_ESPN.get(key, {})
 
 
