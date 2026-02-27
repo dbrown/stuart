@@ -46,6 +46,8 @@ KALSHI_TO_ESPN = {
     "nba": {
         "SAS": "SA",
         "NOP": "NO",
+        "NYK": "NY",
+        "SAS": "SA",
         "UTA": "UTAH",
         "WAS": "WSH"  
     },
@@ -53,11 +55,14 @@ KALSHI_TO_ESPN = {
         'AC': 'ACU',  # Abilene Christian
         'ALBY': 'UALB',  # Albany
         'CAMP': 'CAM',  # Campbell
+        'CCAR': 'CCU',  # Coastal Carolina
         'CHAT': 'UTC', # Chattanooga
         'CHS': 'CHST', # Charleston Southern
+        'CLMB': 'COLU', # Columbia
         'COOK': 'BCU',  # Bethune-Cookman
         'CSN': 'CSUN', # Cal State Northridge
         'CSB': 'CSUB', # Cal State Bakersfield
+        'EKY': 'EKU',  # Eastern Kentucky
         'HP': 'HPU',  # High Point
         'IW': 'UIW',  # Incarnate Word
         'JAC': 'JAX',  # Jacksonville
@@ -68,6 +73,7 @@ KALSHI_TO_ESPN = {
         'MCNS': 'MCN',
         'MHU': 'MERC', # Mercyhurst
         'MIZZ': 'MIZ', # Missouri
+        'MOH': 'M-OH', # Miami Ohio
         'MOSU': 'MOST', # missouri state
         'MTU': 'MTSU', # Middle Tennessee
         'MURR': 'MUR', # Murray State
@@ -75,6 +81,7 @@ KALSHI_TO_ESPN = {
         'NHC': 'NHVN', # New Haven
         'NIAG': 'NIA', # Niagara
         'OKLA': 'OU',  # Oklahoma
+        'PEAY': 'APSU', # Austin Peay
         'PRE': 'PRES', # Presbyterian
         'SBON': 'SBU',  # St. Bonaventure
         'SCAR': 'SC',  # South Carolina
@@ -87,9 +94,11 @@ KALSHI_TO_ESPN = {
         'TXAM': 'TA&M',  # Texas A&M
         'UALR': 'LR',  # Arkansas Little Rock
         'UCRV': 'UCR',  # UC Riverside
+        'ULL': 'UL',  # Louisiana Lafayette
         'UMKC': 'KC',  # UMKC/Kansas City
         'UST': 'STMN' ,  # St. Thomas Minnesota
         'UTRGV': 'RGV',  # Texas Rio Grande Valley
+        'UWGA': 'WGA',  # West Georgia
         'VALP': 'VAL',  # Valparaiso
         'WEBB': 'GWEB',
         'WM': 'W&M'  # William & Mary
